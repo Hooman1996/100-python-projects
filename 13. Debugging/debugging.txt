@@ -1,0 +1,3 @@
+This day's program was a debugging exercise of previous programs we made in previous days.
+You can access the exercise in the course sources using the link to the repl.it repository. 
+The programs that are getting debugged are: FizzBuzz game, Odd or Even numbers and Leap Year exercises.
