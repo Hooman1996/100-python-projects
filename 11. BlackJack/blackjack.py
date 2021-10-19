@@ -26,17 +26,20 @@ def deal(player, k):
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]    
     player += random.choices(cards, k = k)
 
+
 def check_for_ace(player):
     """Checks if there is an ace in the player's hand and replace ir with 1 if sum(player) > 21"""
     if 11 in player and sum(player) > 21:
         ix = player.index(11)
         player[ix] = 1
 
+
 def above21(player):
     """ Checks if sum(player) > 21"""
     if sum(player) > 21:
         return True
     return False
+
 
 def score(player, dealer):
     """ checks and returns the result of the game """
@@ -91,7 +94,6 @@ def game_continues(player, dealer):
     else:
         return True
         
-
 
 def Blackjack():
     """ the blackjack game """

@@ -13,6 +13,7 @@ def format_data(person):
     country = person["country"]
     return name, description, country
 
+
 def higherLower():
     """ Plays the higher, lower game!"""
 
@@ -66,5 +67,6 @@ def higherLower():
             else:
                 print("Goodbye")
                 break
+ 
  
 higherLower()
