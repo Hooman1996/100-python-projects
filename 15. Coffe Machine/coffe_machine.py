@@ -1,18 +1,13 @@
 from data import MENU, profit, resources
 
-resources = {
-    "water": 20,
-    "milk": 20,
-    "coffee": 10,
-}
-
-
 def check_resources(order):
     """ """
     for ingredient in MENU[order]["ingredients"]:
         if resources[ingredient] < MENU[order]["ingredients"][ingredient]:
             print(f"Sorry there is not enough {ingredient}")
             return False
+        else:
+             return True
 
 
 def process_coins(order):
@@ -46,26 +41,31 @@ def transaction(order, total):
 
 def make_coffe(order):
     for ingredient in MENU[order]["ingredients"]:
-        resources[ingredient] -= MENU[order]["ingredients"]
+        resources[ingredient] -= MENU[order]["ingredients"][ingredient]
     
-    print("Here is your {order}. Enjoy!")
+    print(f"Here is your {order}. Enjoy!")
 
 
+def coffee_machine():
+    order = ""
+    while order != "off":
+        order = input("What would you like? (espresso/ latte/ cappuccino) ")
 
-order = "espresso"
-while order != "off":
-    order = input("What would you like? (espresso/ latte/ cappuccino) ")
+        if order == "report":
+            for ingredient in resources:
+                print(f"{ingredient}: {resources[ingredient]}")
+            print(profit)    
 
-    if order == "report":
-        print(resources)
-        print(profit)
+        
+        elif order == "espresso" or order == "latte" or order == "cappuccino":
+            if not check_resources(order):
+                continue
+            else:
+                total = process_coins(order)
+                if check_transaction(order, total):
+                    transaction(order, total)
+                    make_coffe(order)
+    else: 
+        print("Good Bye")
 
-    
-    elif order == "espresso" or order == "latte" or order == "cappuccino":
-        if not check_resources(order):
-            continue
-        else:
-            total = process_coins(order)
-            if check_transaction(order, total):
-                transaction(order, total)
-                make_coffe(order)
+coffee_machine()
